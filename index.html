@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- Tienda generada con Harvys, asistente de e-commerce creado por el Profesor Harvey Sanabria -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armonía Intuitiva — La verdadera armonía no se busca afuera, se recuerda adentro.</title>
+<meta name="description" content="Somos un movimiento que decidió sanar juntos. Acompañamos procesos de transformación personal a través de ceremonias holísticas, sanación de útero, coaching terapéutico y círculos de mujeres.">
+<meta name="generator" content="Harvys — asistente de e-commerce del Profesor Harvey Sanabria">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="anim-baja tarj-elevadas modo-claro">
+
+<!-- MODAL PAGO -->
+<div class="modal-overlay" id="modal-pago" onclick="modalClickFuera(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-head"><h3>Confirmar pago</h3><button class="modal-cerrar" onclick="cerrarModal()" aria-label="Cerrar">✕</button></div>
+    <div class="modal-body">
+      <div class="modal-total"><span class="tl">Total a pagar</span><span class="tm" id="modal-total-monto">$0</span></div>
+      <div class="pago-metodos" id="pago-metodos"></div>
+      <div class="pago-datos" id="pago-datos">
+        <div class="pd-label">Transferir a este número</div>
+        <div class="pd-numero" id="pd-numero"></div>
+        <div class="pd-nombre" id="pd-nombre"></div>
+        <button class="btn-copiar" onclick="copiarNumero()">📋 Copiar número</button>
+      </div>
+      <div class="pasos">
+        <div class="paso"><div class="paso-num">1</div><div class="paso-txt" id="paso-1"></div></div>
+        <div class="paso"><div class="paso-num">2</div><div class="paso-txt">Toca <strong>"Confirmar y enviar"</strong> — se abre WhatsApp con tu pedido</div></div>
+        <div class="paso"><div class="paso-num">3</div><div class="paso-txt" id="paso-3"></div></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <a href="#" target="_blank" rel="noopener" class="btn-wsp" onclick="return prepararWsp(this)">✅ Confirmar y enviar por WhatsApp</a>
+      <button class="btn-seguir" onclick="cerrarModal()">← Seguir comprando</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="cerrarCarrito()"></div>
+
+<!-- VISOR DE FOTOS -->
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto del producto">
+  <figure class="visor-caja">
+    <button class="visor-cerrar" aria-label="Cerrar">✕</button>
+    <div class="visor-foto" id="visor-foto"><img id="visor-img" alt=""></div>
+    <figcaption><strong id="visor-nombre"></strong><span id="visor-precio"></span></figcaption>
+    <div class="visor-ayuda">Toca o haz clic en la foto para ampliarla más</div>
+  </figure>
+</div>
+
+<button class="carrito-fab" onclick="toggleCarrito()" id="fab" aria-label="Abrir carrito">🛒<span class="carrito-badge" id="badge">0</span></button>
+
+<div class="carrito-panel" id="panel-carrito">
+  <div class="panel-header"><h3>Tus experiencias</h3><button class="btn-cerrar" onclick="cerrarCarrito()" aria-label="Cerrar carrito">✕</button></div>
+  <ul id="lista-carrito"></ul>
+  <div class="panel-footer">
+    <div class="total-row"><span class="total-lbl">Total</span><span class="total-monto" id="total">$0</span></div>
+    <div class="panel-btns"><button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button><button class="btn-pagar" onclick="pagar()">Consultar reserva por WhatsApp</button></div>
+  </div>
+</div>
+
+<header class="hero hero-centrado">
+  <div class="hero-bg efecto-ninguno"></div>
+  <div class="hero-content">
+    <div>
+      
+      <div class="hero-badge">Bienestar y encuentros en Bogotá</div>
+      <h1>Armonía<span>Intuitiva</span></h1>
+      <p class="hero-sub">La verdadera armonía no se busca afuera, se recuerda adentro. Descubre espacios de encuentro, introspección y transformación personal.</p>
+      <a href="#catalogo" class="btn-hero">Explorar experiencias
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="hero-stats"><div class="hero-stat"><div class="num">7</div><div class="lbl">Experiencias</div></div><div class="hero-stat"><div class="num">Bogotá</div><div class="lbl">Encuentros presenciales</div></div><div class="hero-stat"><div class="num">A tu ritmo</div><div class="lbl">Un espacio para ti</div></div></div>
+    </div>
+    </div>
+  <div class="hero-scroll"><div></div></div>
+</header>
+
+<section class="banner-sec">
+  <div class="banner-glow"></div>
+  <div class="banner-content">
+    <div class="sec-label">Nuestra esencia</div>
+    <h2>Cada encuentro, <em>un ritual</em></h2>
+    <p>Cada mujer es un espejo, cada historia es medicina. Un espacio para reconocerte completa, sabia y poderosa, a través de ceremonias holísticas y acompañamiento personal.</p>
+    <div class="banner-chips"><span class="chip">Ceremonias holísticas</span><span class="chip">Coaching terapéutico</span><span class="chip">Sanación de útero</span><span class="chip">Círculos de mujeres</span></div>
+  </div>
+</section>
+
+<div class="filtros-wrap" id="filtros-bar">
+  <div class="busqueda-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+    <input type="text" id="buscador" placeholder="Buscar producto..." oninput="filtrarBusqueda()">
+  </div>
+</div>
+<section class="catalogo-wrap" id="catalogo">
+  <div class="catalogo-header">
+    <div><div class="sec-label">Encuentra tu espacio</div><div class="sec-title">Experiencias y sesiones</div></div>
+    <div class="catalogo-count" id="cont-count"></div>
+  </div>
+  <div id="productos"></div>
+</section>
+
+<section class="beneficios-sec" id="beneficios">
+  <div class="sec-centro"><div class="sec-label">Lo que nos inspira</div><div class="sec-title">Encuentros con intención</div></div>
+  <div class="beneficios-grid">
+    <div class="bcard"><div class="bcard-icono">✨</div><h3>Ceremonias originales</h3><p>Rituales para acompañar momentos significativos de tu vida.</p></div><div class="bcard"><div class="bcard-icono">🌿</div><h3>Experiencias únicas y reveladoras</h3><p>Encuentros con intención para explorar tu historia y conectar contigo.</p></div><div class="bcard"><div class="bcard-icono">🪞</div><h3>Nuevas miradas hacia tu interior</h3><p>Espacios de introspección para detenerte, escucharte y reconocer tu camino.</p></div>
+  </div>
+</section>
+
+<section class="recs-sec">
+  <div class="sec-label">Explora tu próximo encuentro</div>
+  <div class="sec-title">Experiencias para descubrir</div>
+  <div class="recs-grid" id="recomendados"></div>
+</section>
+
+<section class="top-sec">
+  <div class="sec-label">Las favoritas de la comunidad</div>
+  <div class="sec-title">Experiencias más elegidas en la comparación</div>
+  <div class="top-grid" id="top"></div>
+</section>
+
+<section class="duelo-sec">
+  <div class="sec-label">Conecta con lo que buscas</div>
+  <div class="sec-title">¿Qué experiencia resuena contigo?</div>
+  <div class="duelo-arena" id="duelo"></div>
+  <p class="duelo-info">Elige la experiencia que más te llama la atención. Tu elección suma al ranking de preferencias, no constituye una recomendación terapéutica.</p>
+</section>
+
+<section class="horarios-sec">
+  <div class="sec-label">Planea tu visita</div>
+  <div class="sec-title">Horarios de atención</div>
+  <ul class="horarios-lista"><li>🕒 8:00 a. m. a 6:00 p. m. · Días de atención por confirmar.</li></ul>
+</section>
+<section class="seccion-personalizada" id="custom-visita">
+<section style="background:var(--bg2);color:var(--tx);padding:48px 24px;border-radius:var(--r)"><div style="max-width:1000px;margin:auto"><p class="sec-label">Tu próximo encuentro</p><h2 class="sec-title">Un espacio para volver a ti</h2><p>Nos encuentras en <strong>Cra 12 # 70-18, Bogotá</strong>. También se realizan ceremonias en espacios acordados con el cliente. Confirma por WhatsApp el lugar, la fecha y las condiciones de tu experiencia antes de reservar.</p><p><strong>Horario:</strong> 8:00 a. m. a 6:00 p. m. Días de atención por confirmar.<br><strong>Medios de pago:</strong> efectivo, Nequi, Daviplata, transferencia bancaria y tarjeta de crédito o débito. Los datos para transferencias están por completar; confírmalos directamente con el negocio al reservar.</p><p style="color:var(--tx2);font-size:0.9rem">Las experiencias holísticas se ofrecen como espacios de bienestar personal y no sustituyen atención médica o psicológica. La solicitud por WhatsApp no confirma automáticamente una reserva.</p><a href="https://wa.me/573212933888" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:var(--p);color:var(--p-txt);padding:12px 20px;border-radius:var(--r);text-decoration:none">Consultar mi encuentro</a></div></section>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-marca"><h3>Armonía Intuitiva</h3><p>Ceremonias holísticas y acompañamiento personal en Bogotá. Espacio en Cra 12 # 70-18. Confirma el lugar y la disponibilidad por WhatsApp.</p></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="https://wa.me/573212933888" target="_blank" rel="noopener">WhatsApp: +57 3212933888</a></li><li><a href="https://instagram.com/armonia.intuitiva" target="_blank" rel="noopener">Instagram: @armonia.intuitiva</a></li><li>📍 Bogotá</li></ul></div>
+    <div class="footer-col"><h4>Pagos</h4><ul><li></li><li></li><li></li><li></li><li></li></ul></div>
+    <div class="footer-col"><h4>Categorías</h4><ul><li>Coaching terapéutico</li><li>Sanación de útero</li><li>Ceremonias holísticas</li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Armonía Intuitiva — Todos los derechos reservados</span>
+    <span>La verdadera armonía se recuerda adentro.</span>
+  </div>
+  <div class="footer-credito">
+    Creada con <strong>Harvys</strong> · Prof. Harvey Sanabria ·
+    <a href="https://wa.me/573103323843?text=Hola%20Profesor%20Harvey%2C%20vi%20una%20tienda%20creada%20con%20Harvys%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">WhatsApp 310 332 3843</a>
+  </div>
+</footer>
+
+<!-- Copia del proyecto para volver a abrirlo en Harvys (botón "Abrir"). No la borres. -->
+<script type="application/json" id="harvys-proyecto">{"negocio":{"nombre":"Armonía Intuitiva","descripcion":"Somos un movimiento que decidió sanar juntos. Acompañamos procesos de transformación personal a través de ceremonias holísticas, sanación de útero, coaching terapéutico y círculos de mujeres.","eslogan":"La verdadera armonía no se busca afuera, se recuerda adentro.","ciudad":"Bogotá","cobertura":"Servicios presenciales en Bogotá. Lugar del encuentro por confirmar al reservar.","whatsapp":"573212933888","instagram":"armonia.intuitiva","facebook":"","tiktok":"","horarios":["8:00 a. m. a 6:00 p. m. · Días de atención por confirmar."],"logo":"","direccion":"Cra 12 # 70-18"},"tema":{"nombreEstilo":"Esencia natural","modo":"claro","colores":{"primario":"#934B38","textoSobrePrimario":"#FFFFFF","fondo":"#FAF6EF","fondoAlterno":"#EFE5D7","tarjeta":"#FFFFFF","texto":"#302720","textoSuave":"#695B50","acento":"#95691F"},"fuentes":{"titulos":"Playfair Display","cuerpo":"Lato"},"titulosMayusculas":false,"radio":20,"animaciones":"baja","fondoEfecto":"ninguno","hero":"centrado","tarjetas":"elevadas"},"textos":{"heroEtiqueta":"Bienestar y encuentros en Bogotá","heroTitulo":"Armonía","heroTituloResaltado":"Intuitiva","heroSubtitulo":"La verdadera armonía no se busca afuera, se recuerda adentro. Descubre espacios de encuentro, introspección y transformación personal.","heroBoton":"Explorar experiencias","heroImagen":"","estadisticas":[{"valor":"{productos}","etiqueta":"Experiencias"},{"valor":"Bogotá","etiqueta":"Encuentros presenciales"},{"valor":"A tu ritmo","etiqueta":"Un espacio para ti"}],"bannerEtiqueta":"Nuestra esencia","bannerTitulo":"Cada encuentro,","bannerTituloResaltado":"un ritual","bannerTexto":"Cada mujer es un espejo, cada historia es medicina. Un espacio para reconocerte completa, sabia y poderosa, a través de ceremonias holísticas y acompañamiento personal.","chips":["Ceremonias holísticas","Coaching terapéutico","Sanación de útero","Círculos de mujeres"],"catalogoEtiqueta":"Encuentra tu espacio","catalogoTitulo":"Experiencias y sesiones","botonAgregar":"+ Agregar experiencia","beneficiosEtiqueta":"Lo que nos inspira","beneficiosTitulo":"Encuentros con intención","recomendadosEtiqueta":"Explora tu próximo encuentro","recomendadosTitulo":"Experiencias para descubrir","topEtiqueta":"Las favoritas de la comunidad","topTitulo":"Experiencias más elegidas en la comparación","dueloEtiqueta":"Conecta con lo que buscas","dueloTitulo":"¿Qué experiencia resuena contigo?","dueloInfo":"Elige la experiencia que más te llama la atención. Tu elección suma al ranking de preferencias, no constituye una recomendación terapéutica.","testimoniosEtiqueta":"Voces de nuestra comunidad","testimoniosTitulo":"Historias compartidas","horariosEtiqueta":"Planea tu visita","horariosTitulo":"Horarios de atención","footerTexto":"Ceremonias holísticas y acompañamiento personal en Bogotá. Espacio en Cra 12 # 70-18. Confirma el lugar y la disponibilidad por WhatsApp.","footerFrase":"La verdadera armonía se recuerda adentro.","carritoTitulo":"Tus experiencias","botonPagar":"Consultar reserva por WhatsApp"},"productos":[{"id":"ai-01","nombre":"Sesión uno a uno","precio":150000,"categoria":"Coaching terapéutico","imagen":"foto:6lvg4q","descripcion":"Encuentro individual de coaching terapéutico. Consulta duración y disponibilidad antes de reservar.","opciones":null,"destacado":false},{"id":"ai-02","nombre":"Ceremonia de Sanación de Útero","precio":222000,"categoria":"Sanación de útero","imagen":"foto:9u3lxl","descripcion":"Experiencia de bienestar holístico. Consulta el desarrollo y las condiciones del encuentro por WhatsApp.","opciones":null,"destacado":false},{"id":"ai-03","nombre":"Cumpleaños","precio":500000,"categoria":"Ceremonias holísticas","imagen":"foto:xuf9la","descripcion":"Ceremonia holística para celebrar un cumpleaños. Confirma participantes, lugar y alcance del servicio.","opciones":null,"destacado":false},{"id":"ai-04","nombre":"Baby shower","precio":500000,"categoria":"Ceremonias holísticas","imagen":"foto:fosw66","descripcion":"Ceremonia holística para un baby shower. Consulta participantes, lugar y detalles antes de reservar.","opciones":null,"destacado":false},{"id":"ai-05","nombre":"Renovación de votos","precio":500000,"categoria":"Ceremonias holísticas","imagen":"foto:uhfwxw","descripcion":"Ceremonia holística de renovación de votos. Coordina los detalles del encuentro por WhatsApp.","opciones":null,"destacado":false},{"id":"ai-06","nombre":"Cierres y aperturas de ciclos","precio":150000,"categoria":"Coaching terapéutico","imagen":"foto:aaxkh4","descripcion":"Encuentro de coaching terapéutico enfocado en cierres y aperturas de ciclos. Confirma duración y disponibilidad.","opciones":null,"destacado":false},{"id":"ai-07","nombre":"Despedida de soltera","precio":500000,"categoria":"Ceremonias holísticas","imagen":"foto:1tjzwd","descripcion":"Ceremonia holística para una despedida de soltera. Consulta participantes, lugar y alcance del servicio.","opciones":null,"destacado":false}],"beneficios":[{"icono":"✨","titulo":"Ceremonias originales","texto":"Rituales para acompañar momentos significativos de tu vida."},{"icono":"🌿","titulo":"Experiencias únicas y reveladoras","texto":"Encuentros con intención para explorar tu historia y conectar contigo."},{"icono":"🪞","titulo":"Nuevas miradas hacia tu interior","texto":"Espacios de introspección para detenerte, escucharte y reconocer tu camino."}],"testimonios":[],"pagos":{"metodos":["Efectivo","Nequi","Daviplata","Transferencia bancaria","Tarjeta de crédito o débito"],"numeroTransferencia":"[POR COMPLETAR]","titular":"[POR COMPLETAR]","contraentregaDetalle":"No aplica: se ofrecen servicios presenciales, no entregas de productos."},"backend":{"url":""},"secciones":["banner","catalogo","beneficios","recomendados","top","duelo","horarios","custom:visita"],"personalizado":{"css":"","secciones":[{"id":"visita","html":"\u003csection style=\"background:var(--bg2);color:var(--tx);padding:48px 24px;border-radius:var(--r)\">\u003cdiv style=\"max-width:1000px;margin:auto\">\u003cp class=\"sec-label\">Tu próximo encuentro\u003c/p>\u003ch2 class=\"sec-title\">Un espacio para volver a ti\u003c/h2>\u003cp>Nos encuentras en \u003cstrong>Cra 12 # 70-18, Bogotá\u003c/strong>. También se realizan ceremonias en espacios acordados con el cliente. Confirma por WhatsApp el lugar, la fecha y las condiciones de tu experiencia antes de reservar.\u003c/p>\u003cp>\u003cstrong>Horario:\u003c/strong> 8:00 a. m. a 6:00 p. m. Días de atención por confirmar.\u003cbr>\u003cstrong>Medios de pago:\u003c/strong> efectivo, Nequi, Daviplata, transferencia bancaria y tarjeta de crédito o débito. Los datos para transferencias están por completar; confírmalos directamente con el negocio al reservar.\u003c/p>\u003cp style=\"color:var(--tx2);font-size:0.9rem\">Las experiencias holísticas se ofrecen como espacios de bienestar personal y no sustituyen atención médica o psicológica. La solicitud por WhatsApp no confirma automáticamente una reserva.\u003c/p>\u003ca href=\"https://wa.me/573212933888\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"display:inline-block;background:var(--p);color:var(--p-txt);padding:12px 20px;border-radius:var(--r);text-decoration:none\">Consultar mi encuentro\u003c/a>\u003c/div>\u003c/section>"}]}}</script>
+<script src="script.js"></script>
+</body>
+</html>
